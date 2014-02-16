@@ -1,5 +1,11 @@
 ﻿var mainModule = angular.module("mainModule", ['ngRoute', 'ngResource', 'ui.bootstrap.datetimepicker'])
     .config(function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/main/dashboard',
+            {
+                templateUrl: '/templates/dashboard.html',
+                controller: 'DashboardController'
+            });
+
         $routeProvider.when('/main/destinations',
             {
                 templateUrl: '/templates/destinations.html',
@@ -44,7 +50,7 @@
             });
 
         // Default Route****
-        $routeProvider.otherwise({ redirectTo: '/main/airplanes' });
+        $routeProvider.otherwise({ redirectTo: '/main/dashboard' });
 
         $locationProvider.html5Mode(true);
     });

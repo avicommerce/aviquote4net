@@ -1,0 +1,78 @@
+﻿<div class="row">
+    <div class="col-md-10">
+        <h2>dashboard</h2>
+    </div>
+</div>
+
+<div class="row clearfix">
+	<div class="col-md-12 column">
+		<div class="row">
+			<div class="col-md-8">
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 class="panel-title">recently added aircrafts to my fleet</h3>
+					</div>
+					<div class="panel-body">
+					    <div class="list-group">
+					        <a ng-repeat="airplane in airplanes" href="/main/airplane/{{airplane.identifier}}" class="list-group-item">
+					            <h4 class="list-group-item-heading">{{ airplane.name }}</h4>
+					            <p class="list-group-item-text">{{ airplane.name }}</p>
+					        </a>
+					    </div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 class="panel-title">recently added destinations</h3>
+					</div>
+					<div class="panel-body">
+					    <div class="list-group">
+                            <div ng-repeat="destination in destinations" class="media">
+                              <a class="pull-left" href="/main/destination/{{destination.city}}">
+                                <img class="media-object" src="http://lorempixel.com/64/64/city">
+                              </a>
+                              <div class="media-body">
+                                <h4 class="media-heading">{{ destination.city }}</h4>
+                                {{ destination.country }}
+                              </div>
+                            </div>
+					    </div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 class="panel-title">recent trips</h3>
+					</div>
+					<div class="panel-body">
+					    <button type="button" class="btn btn-default btn-sm btn-block" ng-repeat="trip in recentTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></button>
+					</div>
+				</div>
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+					<h3 class="panel-title">incompleted trips</h3>
+					</div>
+					<div class="panel-body">
+					    <button type="button" class="btn btn-default btn-sm btn-block" ng-repeat="trip in notCompletedTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></button>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 class="panel-title">stats</h3>
+					</div>
+					<div class="panel-body">
+					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/trips">{{ recentTrips.length }} Trips</a></button>
+					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/airplanes">{{ airplanes.length }} Aircrafts</a></button>
+					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/destinations">{{ destinations.length }} Destinations</a></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

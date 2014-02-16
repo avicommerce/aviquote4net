@@ -73,6 +73,8 @@
     <Content Include="Scripts\app\airplanes\airplanes-controller.js" />
     <Content Include="Scripts\app\airplanes\airplane-repository.js" />
     <Content Include="Scripts\app\common\constants.js" />
+    <Content Include="Scripts\app\common\navbar-controller.js" />
+    <Content Include="Scripts\app\dashboard\dashboard-controller.js" />
     <Content Include="Scripts\app\destinations\destination-repository.js" />
     <Content Include="Scripts\app\destinations\destinations-controller.js" />
     <Content Include="Scripts\app\main-module.js" />
@@ -365,6 +367,7 @@
     <Content Include="Scripts\libs\moment.min.js" />
     <Content Include="templates\airplanes.html" />
     <Content Include="templates\airplane.html" />
+    <Content Include="templates\dashboard.html" />
     <Content Include="templates\create-trip.html" />
     <Content Include="templates\trip.html" />
     <Content Include="templates\trips.html" />

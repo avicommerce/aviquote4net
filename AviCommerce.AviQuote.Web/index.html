@@ -19,6 +19,7 @@
         <!-- My app script files -->
         <script src="/Scripts/app/common/constants.js"></script>
         <script src="/Scripts/app/main-module.js"></script>
+        <script src="/Scripts/app/common/navbar-controller.js"></script>
         <script src="/Scripts/app/airplanes/airplanes-controller.js"></script>
         <script src="/Scripts/app/airplanes/airplane-repository.js"></script>
         <script src="/Scripts/app/destinations/destinations-controller.js"></script>
@@ -26,6 +27,7 @@
         <script src="/Scripts/app/trips/trips-controller.js"></script>
         <script src="/Scripts/app/trips/trip-repository.js"></script>
         <script src="/Scripts/app/trips/trip-service.js"></script>
+        <script src="/Scripts/app/dashboard/dashboard-controller.js"></script>
     </head>
     <body>
         <div class="container">
@@ -33,18 +35,22 @@
                 <div class="navbar navbar-default">
                     <div class="navbar-header">
                         <ul class="nav navbar-nav">
-                            <li><span class="navbar-brand">AviQuote main module</span></li>
+                            <!--<li><span class="navbar-brand">AviQuote</span></li>-->
+                            <li><a class="navbar-brand" href="/main/dashboard">AviQuote</a></li>
                         </ul>
                     </div>
-                    <div class="navbar-collapse collapse">
+                    <div class="navbar-collapse collapse" ng-controller="NavbarController">
                         <ul class="nav navbar-nav">
-                            <li><a href="/main/airplanes">my fleet</a></li>
+                            <li ng-class="{'active':getClass('/dashboard')}"><a href="/main/dashboard">dashboard</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
-                            <li><a href="/main/trips">my trips</a></li>
+                            <li ng-class="{'active':getClass('/airplanes')}"><a href="/main/airplanes">my fleet</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
-                            <li><a href="/main/destinations">destinations</a></li>
+                            <li ng-class="{'active':getClass('/trips')}"><a href="/main/trips">my trips</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li ng-class="{'active':getClass('/destinations')}"><a href="/main/destinations">destinations</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">logout</a></li>
