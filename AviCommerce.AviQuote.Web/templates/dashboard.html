@@ -17,7 +17,7 @@
 					    <div class="list-group">
 					        <a ng-repeat="airplane in airplanes" href="/main/airplane/{{airplane.identifier}}" class="list-group-item">
 					            <h4 class="list-group-item-heading">{{ airplane.name }}</h4>
-					            <p class="list-group-item-text">{{ airplane.name }}</p>
+					            <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, nibh non pretium condimentum, urna massa tincidunt quam, eu placerat risus enim ut velit. Fusce sed vestibulum metus. Vivamus ut vehicula est. Nam sit amet libero dapibus, consequat arcu at, eleifend est. Quisque id</p>
 					        </a>
 					    </div>
 					</div>
@@ -35,7 +35,7 @@
                               </a>
                               <div class="media-body">
                                 <h4 class="media-heading">{{ destination.city }}</h4>
-                                {{ destination.country }}
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus sed nibh mattis ultrices. Etiam mollis blandit ante sed adipiscing. Sed porta lectus vel sodales viverra. Vivamus ac scelerisque lacus. Aliquam eros neque, scelerisque quis vulputate eget.
                               </div>
                             </div>
 					    </div>
@@ -50,26 +50,49 @@
 					<h3 class="panel-title">recent trips</h3>
 					</div>
 					<div class="panel-body">
-					    <button type="button" class="btn btn-default btn-sm btn-block" ng-repeat="trip in recentTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></button>
+				        <ui>
+				            <li ng-repeat="trip in recentTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></li>
+				        </ui>
 					</div>
 				</div>
 				<div class="panel panel-warning">
 					<div class="panel-heading">
 					<h3 class="panel-title">incompleted trips</h3>
 					</div>
-					<div class="panel-body">
-					    <button type="button" class="btn btn-default btn-sm btn-block" ng-repeat="trip in notCompletedTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></button>
-					</div>
+				    <div class="panel-body">
+				        <ui>
+				            <li ng-repeat="trip in notCompletedTrips"><a href="/main/trip/{{ trip.identifier }}">{{ trip.name }}</a></li>
+				        </ui>
+				    </div>
 				</div>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 					<h3 class="panel-title">stats</h3>
 					</div>
-					<div class="panel-body">
-					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/trips">{{ recentTrips.length }} Trips</a></button>
-					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/airplanes">{{ airplanes.length }} Aircrafts</a></button>
-					    <button type="button" class="btn btn-default btn-sm btn-block"><a href="/main/destinations">{{ destinations.length }} Destinations</a></button>
-					</div>
+				    <div class="panel-body">
+                        <button type="button" class="btn btn-success btn-sm btn-block">total</button><br/>
+				        <ui>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Trips</a></li>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Orders</a></li>
+				            <li><a href="/main/airplanes">{{ airplanes.length }} Aircrafts</a></li>
+				            <li><a href="/main/destinations">{{ destinations.length }} Destinations</a></li>
+				        </ui><br/>
+                        <button type="button" class="btn btn-success btn-sm btn-block">last 30 days</button><br/>
+				        <ui>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Trips</a></li>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Orders</a></li>
+				        </ui><br/>
+                        <button type="button" class="btn btn-success btn-sm btn-block">last 3 months</button><br/>
+				        <ui>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Trips</a></li>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Orders</a></li>
+				        </ui><br/>
+                        <button type="button" class="btn btn-success btn-sm btn-block">last 6 months</button><br/>
+				        <ui>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Trips</a></li>
+				            <li><a href="/main/trips">{{ recentTrips.length }} Orders</a></li>
+				        </ui>
+				    </div>
 				</div>
 			</div>
 		</div>
