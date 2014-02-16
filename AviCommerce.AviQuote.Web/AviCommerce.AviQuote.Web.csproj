@@ -108,6 +108,10 @@
     <Content Include="Scripts\libs\angular-cookies.min.js.map" />
     <Content Include="Scripts\libs\angular-animate.min.js.map" />
     <Content Include="Scripts\libs\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\aviquote - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\aviquote - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aviquote - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\aviquote - Web Deploy.pubxml" />
     <None Include="Scripts\libs\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\bootstrap.min.js" />
@@ -395,7 +399,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53671</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:55815/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

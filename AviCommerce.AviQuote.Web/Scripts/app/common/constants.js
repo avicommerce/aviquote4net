@@ -1,4 +1,4 @@
 ﻿var constants = {
-    WEBAPISERVER: "http://localhost:54021/"
+    WEBAPISERVER: "http://aviquote-web-api.azurewebsites.net/"
 };
 
