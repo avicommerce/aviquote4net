@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="col-md-6">
         <h4>Trip: {{ trip.identifier }} - ({{ trip.name }})</h4>
-        <span>Route: {{ tripRoute }}</span><br/>
+        <span>Route: Dubai => Istanbul => London</span><br/>
         <span>From: {{ trip.estimatedTakeOff  | date:'dd MMM yyyy hh:MM'}} - To: {{ trip.estimatedLanding  | date:'dd MMM yyyy hh:MM'}}</span><br/>
         <span>Estimated Total Cost: {{trip.estimatedFuelCost + trip.estimatedHandlingCost + trip.estimatedNavigationFeesCost + trip.estimatedAirportFeesCost | currency}}</span><br/><br/>
         <button ng-show="trip.isEditable && trip.stops.length > 0" type="button" class="btn btn-primary" ng-click="toggleTripEditable(trip)">Complete Trip</button>
