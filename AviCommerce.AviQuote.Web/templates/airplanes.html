@@ -1,0 +1,24 @@
+﻿    <div class="row">
+        <a href="/main/create-airplane">new airplane</a>
+    </div>
+    <div class="row">
+        <div class="span10">
+            <h2>my fleet</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span10">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>Manufaturer</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-click="onAirplaneClicked(airplane.name)" ng-repeat="airplane in airplanes">
+                    <td>{{airplane.name}}</td>
+                    <td>{{airplane.manufacturer}}</td>
+                    <td>{{airplane.year}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>

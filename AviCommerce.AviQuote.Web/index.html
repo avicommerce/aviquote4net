@@ -1,0 +1,58 @@
+﻿<html ng-app="mainModule">
+    <head>
+        <title>AviQuote - Main Module</title>
+        <link href="/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/bootstrap-cyborg.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/datetimepicker.css" rel="stylesheet" />
+        <link href="/Content/app/app.css" rel="stylesheet" />
+        
+        <!-- 3rd Party Script Libraries and Frameworks -->
+        <!-- Datetime Picker - http://dalelotts.github.io/angular-bootstrap-datetimepicker/ -->
+        <script src="/Scripts/libs/angular.min.js"></script>
+        <script src="/Scripts/libs/angular-resource.min.js"></script>
+        <script src="/Scripts/libs/angular-route.min.js"></script>
+        <script src="/Scripts/libs/jquery-1.9.0.min.js"></script>
+        <script src="/Scripts/libs/bootstrap.min.js"></script>
+        <script src="/Scripts/libs/moment.min.js"></script>
+        <script src="/Scripts/libs/datetimepicker.js"></script>
+        
+        <!-- My app script files -->
+        <script src="/Scripts/app/common/constants.js"></script>
+        <script src="/Scripts/app/main-module.js"></script>
+        <script src="/Scripts/app/airplanes/airplanes-controller.js"></script>
+        <script src="/Scripts/app/airplanes/airplane-repository.js"></script>
+        <script src="/Scripts/app/destinations/destinations-controller.js"></script>
+        <script src="/Scripts/app/destinations/destination-repository.js"></script>
+        <script src="/Scripts/app/trips/trips-controller.js"></script>
+        <script src="/Scripts/app/trips/trip-repository.js"></script>
+        <script src="/Scripts/app/trips/trip-service.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav">
+                            <li><span class="navbar-brand">AviQuote main module</span></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/main/airplanes">my fleet</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li><a href="/main/trips">my trips</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li><a href="/main/destinations">destinations</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div ng-view></div>
+        </div>
+    </body>
+</html>

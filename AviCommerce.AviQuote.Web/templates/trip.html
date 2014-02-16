@@ -1,0 +1,167 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <h4>Trip: {{ trip.identifier }} - ({{ trip.name }})</h4>
+        <span>Route: {{ tripRoute }}</span><br/>
+        <span>From: {{ trip.estimatedTakeOff  | date:'dd MMM yyyy hh:MM'}} - To: {{ trip.estimatedLanding  | date:'dd MMM yyyy hh:MM'}}</span><br/>
+        <span>Estimated Total Cost: {{trip.estimatedFuelCost + trip.estimatedHandlingCost + trip.estimatedNavigationFeesCost + trip.estimatedAirportFeesCost | currency}}</span><br/><br/>
+        <button ng-show="trip.isEditable && trip.stops.length > 0" type="button" class="btn btn-primary" ng-click="toggleTripEditable(trip)">Complete Trip</button>
+        <span ng-hide="trip.isEditable">Trip completed on {{ trip.completedDate | date:'dd MMM yyyy hh:MM'}}</span><br/><br/>
+        <button ng-hide="trip.isEditable" type="button" class="btn btn-danger" ng-click="toggleTripEditable(trip)">Re-activate Trip</button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary btn-sm btn-block" ng-click="switchToFuelCost()">Fuel cost {{trip.estimatedFuelCost | currency}}</button>
+        <button type="button" class="btn btn-success btn-sm btn-block" ng-click="switchToHandlingCost()">Handling cost {{trip.estimatedHandlingCost | currency}}</button>
+        <button type="button" class="btn btn-info btn-sm btn-block" ng-click="switchToNavigationFeesCost()">Navigation fees {{trip.estimatedNavigationFeesCost | currency}}</button>
+        <button type="button" class="btn btn-warning btn-sm btn-block" ng-click="switchToAirportFeesCost()">Airport fees {{trip.estimatedAirportFeesCost | currency}}</button>
+    </div>
+</div>
+
+<hr/>
+
+<form class="form-inline" ng-show="trip.isEditable" name="tripStopForm" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="symbol" ng-model="airportSymbol" class="form-control" placeholder="Enter ICOA or IATA airport symbol" required/>
+                <div class="text-danger" ng-show="tripStopForm.symbol.$error.required && tripStopForm.symbol.$dirty">Please enter airport symbol</div>
+            </div>
+            <button class="btn btn-default" ng-disabled="tripStopForm.$invalid" ng-click="addStop(airportSymbol)">Add Stop</button>
+            <div style="color:red;" ng-show="errors.length > 0" ng-repeat="error in errors">{{error}}</div>
+        </div>
+    </div>
+</form>
+
+<hr ng-show="trip.isEditable" />
+
+<div class="row">
+    <div class="col-md-12">
+        <span ng-show="trip.stops.length > 0">There are {{ trip.stops.length}} stops in this trip!</span> 
+        <span ng-show="trip.isEditable && trip.stops.length > 0">You can arrange the stops the way you see fit (by clicking the stop arrows) and/or add new stops.</span>
+        <span ng-show="trip.isEditable && trip.stops.length == 0">There are no stops in this trip! Please use the 'Add Stop' form to add stops.</span>
+    </div>
+</div>
+
+<div ng-show="trip.stops.length > 0" class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5">
+        <h3>Stop</h3>
+    </div>
+    <div class="col-md-6">
+        <h3 ng-show="isFuelCostMode">Fuel Cost Estimate</h3>
+        <h3 ng-show="isHandlingCostMode">Handling Cost Estimate</h3>
+        <h3 ng-show="isNavigationFeesCostMode">Navigation Fees Cost Estimate</h3>
+        <h3 ng-show="isAirportFeesCostMode">Airport Fees Cost Estimate</h3>
+    </div>
+</div>
+
+<div class="row tripStop" ng-repeat="stop in trip.stops">
+    <!-- Stop control -->
+    <div class="col-md-1 well">
+        <div ng-show="trip.isEditable && $index > 0" class="reorderButton" ng-click="upTripStop(stop)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        <div class="badge badge-inverse">
+            <div>{{stop.order}}</div>
+        </div>
+        <div ng-show="trip.isEditable && $index < (trip.stops.length-1)" class="reorderButton" ng-click="downTripStop(stop)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <a ng-show="trip.isEditable" ng-click="removeTripStop(stop)">Remove</a>
+    </div>
+
+    <!-- Stop Detail -->
+    <div class="col-md-5 well">
+        <h4 class="well-title">{{stop.stop}}</h4>
+        <h6 style="margin-top:-10px">{{stop.identifier}}</h6>
+        <a ng-click="showDestination(stop.destination)">Browse Destination</a><br/><br/>
+
+        <span ng-show="stop.isOrigin">Estimated take off {{stop.estimatedTakeOff | date:'dd MMM yyyy HH:mm'}}</span>
+        <div ng-show="stop.isOrigin && trip.isEditable" class="dropdown">
+            <a  class="dropdown-toggle" id="dropdown-takeoff-{{stop.order}}" role="button" data-toggle="dropdown" data-target="#" href="#">Click here to change date/time</a>
+            <ul class="dropdown-menu" role="menu">
+                <datetimepicker data-ng-model="stop.estimatedTakeOff" data-datetimepicker-config="{ dropdownSelector: '#dropdown-takeoff-{{stop.order}}' }"/>
+            </ul>
+        </div>
+        <br ng-show="stop.isOrigin"/>
+
+        <span ng-show="stop.isDestination">Estimated landing {{stop.estimatedLanding | date:'dd MMM yyyy HH:mm'}}</span>
+        <div ng-show="stop.isDestination && trip.isEditable" class="dropdown">
+            <a  class="dropdown-toggle" id="dropdown-landing-{{stop.order}}" role="button" data-toggle="dropdown" data-target="#" href="#">Click here to change date/time</a>
+            <ul class="dropdown-menu" role="menu">
+                <datetimepicker data-ng-model="stop.estimatedLanding" data-datetimepicker-config="{ dropdownSelector: '#dropdown-landing-{{stop.order}}' }"/>
+            </ul>
+        </div>
+        <br ng-show="stop.isDestination"/>
+
+        Technical Stop: 
+        <input ng-show="trip.isEditable" type="checkbox" ng-checked="stop.isTechnical"/> 
+        <span ng-hide="trip.isEditable">{{stop.isTechnical}}</span>
+    </div>
+
+    <!-- Fuel Cost Analysis Detail -->
+    <div ng-show="isFuelCostMode" class="col-md-6 well">
+        Supplier:
+        <select ng-hide="stop.isFuelOrdered || !trip.isEditable" name="fuelSupplier" ng-model="stop.fuelSupplier" ng-options="a for a in fuelSuppliers" ng-change="fuelSupplierChanged(stop)"></select>
+        <a ng-hide="stop.isFuelOrdered || !trip.isEditable" ng-click="browsePrices(stop)">Browse Prices</a>
+        <span ng-show="stop.isFuelOrdered || !trip.isEditable" >{{stop.fuelSupplier}}</span>
+        <br/>
+        Gallons:
+        <input ng-hide="stop.isFuelOrdered || !trip.isEditable" type="text" style="width: 50px" ng-model="stop.fuelGallons"/>
+        <span ng-show="stop.isFuelOrdered || !trip.isEditable" >{{stop.fuelGallons}}</span>
+        <br/>
+        Price per gallon: <span>{{stop.fuelPricePerGallon | currency}}</span><br/>
+        Total cost <span>{{stop.fuelGallons * stop.fuelPricePerGallon | currency}}</span><br/><br/>
+        
+        <button ng-hide="stop.isFuelOrdered || !trip.isEditable" ng-click="placeFuelOrder(stop)" type="button" class="btn btn-primary">Place Order</button>
+        <div ng-show="stop.isFuelOrdered" >
+            Order placed on <span>{{stop.fuelOrderedDate  | date:'dd MMM yyyy hh:mm'}}</span><br/><br/>
+            <button ng-show="trip.isEditable" type="button" ng-click="cancelFuelOrder(stop)" class="btn btn-danger">Cancel Order</button>
+        </div>
+    </div>
+
+    <!-- Handling Cost Analysis Detail -->
+    <div ng-show="isHandlingCostMode"  class="col-md-6 well">
+        Add stuff here for handling cost analysis
+    </div>
+
+    <!-- Navigation Fees Cost Analysis Detail -->
+    <div ng-show="isNavigationFeesCostMode"  class="col-md-6 well">
+        Add stuff here for navigation fees cost analysis
+    </div>
+
+    <!-- Airport Fees Cost Analysis Detail -->
+    <div ng-show="isAirportFeesCostMode"  class="col-md-6 well">
+        Add stuff here for airport fees cost analysis
+    </div>
+
+    <div class="modal fade" id="fuelPricesDlg-{{stop.identifier}}" role="dialog" aria-labelledby="fuelPricesDlgLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h4 class="modal-title" id="fuelPricesDlgLabel">
+		                '{{ stop.fuelSupplier }}' is currently selected! Please click on any other fuel supplier to change your selection. 
+		            </h4>
+		        </div>
+			    <div class="modal-body">
+                    <table class="table table-condensed table-hover">
+                        <tr>
+                            <th>Supplier</th>
+                            <th>Price per gallon</th>
+                        </tr>
+                        <tr ng-class="{'warning':stop.fuelSupplier == supplier.name}" ng-click="fuelSupplierSelected(stop, supplier)" ng-repeat="supplier in fuelSuppliersPrices">
+                            <td>{{supplier.name}}</td>
+                            <td>{{supplier.price | currency}}</td>
+                        </tr>
+                    </table>
+			    </div>
+			    <div class="modal-footer">
+			    Last price update {{ stop.estimatedTakeOff | date:'dd MMM yyyy hh:mm'}}
+			    </div>
+		    </div>
+	    </div>
+    </div>
+
+</div>
+

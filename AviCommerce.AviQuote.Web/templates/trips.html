@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <a href="/main/create-trip">plan a new trip</a>
+</div>
+<div class="row">
+    <div class="span10">
+        <h2>my trips</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Aircraft</th>
+                <th>Create Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Estimated Cost</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Stops</th>
+                <th>Legs</th>
+            </tr>
+            <tr ng-click="onTripClicked(tripx.identifier)" ng-class="{'warning':tripx.isEditable}" ng-repeat="tripx in trips">
+                <td>{{tripx.name}}</td>
+                <td>{{tripx.airplane}}</td>
+                <td>{{tripx.createDate | date}}</td>
+                <td>{{tripx.from}}</td>
+                <td>{{tripx.to}}</td>
+                <td>{{tripx.estimatedFuelCost + tripx.estimatedHandlingCost + tripx.estimatedNavigationFeesCost + tripx.estimatedAirportFeesCost | currency}}</td>
+                <td>{{tripx.estimatedTakeOff  | date}}</td>
+                <td>{{tripx.estimatedLanding  | date}}</td>
+                <td>{{tripx.stops}}</td>
+                <td>{{tripx.legs}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
