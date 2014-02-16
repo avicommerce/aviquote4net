@@ -1,4 +1,4 @@
-﻿var mainModule = angular.module("mainModule", ['ngRoute', 'ngResource', 'ui.bootstrap.datetimepicker'])
+﻿var mainModule = angular.module("mainModule", ['ngRoute', 'ngResource', 'ui.bootstrap.datetimepicker', 'google-maps'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/main/dashboard',
             {

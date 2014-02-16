@@ -34,3 +34,7 @@ select, textarea {
 .reorderButton {
   cursor:pointer;
 }
+
+.angular-google-map-container {
+    height: 500px;
+}

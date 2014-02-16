@@ -18,8 +18,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                     {
                         City = "Dubai", 
                         Country = "United Arab Emirates", 
-                        Longitude = 55.9878, 
-                        Latitude = 23.8765, 
+                        Longitude = 55.18, 
+                        Latitude = 25.16, 
                         Airports = 2,
                         Hospitals = 13,
                         Restaurants = 45
@@ -28,8 +28,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                     {
                         City = "Abou Dhabi", 
                         Country = "United Arab Emirates", 
-                        Longitude = 55.9878, 
-                        Latitude = 23.8765, 
+                        Longitude = 54.23, 
+                        Latitude = 24.27, 
                         Airports = 2,
                         Hospitals = 9,
                         Restaurants = 23
@@ -38,8 +38,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                     {
                         City = "Doha", 
                         Country = "Qatar", 
-                        Longitude = 55.9878, 
-                        Latitude = 23.8765, 
+                        Longitude = 51.23, 
+                        Latitude = 25.17, 
                         Airports = 1,
                         Hospitals = 7,
                         Restaurants = 12
@@ -48,8 +48,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                     {
                         City = "Amman", 
                         Country = "Jordan", 
-                        Longitude = 55.9878, 
-                        Latitude = 23.8765, 
+                        Longitude = 35.56, 
+                        Latitude = 31.57, 
                         Airports = 1,
                         Hospitals = 9,
                         Restaurants = 23
@@ -58,8 +58,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                     {
                         City = "Cairo", 
                         Country = "Egypt", 
-                        Longitude = 55.9878, 
-                        Latitude = 23.8765, 
+                        Longitude = 31.14, 
+                        Latitude = 30.03, 
                         Airports = 2,
                         Hospitals = 7,
                         Restaurants = 7
@@ -79,6 +79,7 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                 Latitude = 23.8765,
                 VisaRequirement = "Blab Blah",
                 Climate = "November to March is beautiful!! Otherwise it is hot and humid.",
+                MapZoom = 12,
 
                 Airports = new List<AirportVm>()
                     {
@@ -87,8 +88,8 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                                 IataSymbol = "DXB",
                                 IcoaSymbol = "DXB1",
                                 Name = "Dubai International",
-                                Longitude = 55.9878,
-                                Latitude = 23.8765,
+                                Longitude = 55.3644,
+                                Latitude = 25.2528,
                                 FuelSuppliers = new List<FuelSupplierVm>()
                                     {
                                         new FuelSupplierVm
@@ -140,8 +141,53 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                                 IataSymbol = "WCD",
                                 IcoaSymbol = "WCD1",
                                 Name = "Dubai World Central",
-                                Longitude = 55.9878,
-                                Latitude = 23.8765,
+                                Longitude = 55.1722,
+                                Latitude = 24.8861,
+                                FuelSuppliers = new List<FuelSupplierVm>()
+                                    {
+                                        new FuelSupplierVm
+                                            {
+                                                Name = "Jetex",
+                                                YearEstablished =  "2001",
+                                                AveragePrice = 4.32,
+                                                LatestPrice = 4.10
+                                            },
+                                        new FuelSupplierVm
+                                            {
+                                                Name = "Hadeed",
+                                                YearEstablished =  "1979",
+                                                AveragePrice = 4.34,                                                
+                                                LatestPrice = 4.09
+                                            }
+                                    },
+                                Handlers = new List<AircraftHandlerVm>()
+                                    {
+                                        new AircraftHandlerVm
+                                            {
+                                                Name = "Dnata",
+                                                Year =  "1967"
+                                            },
+                                        new AircraftHandlerVm
+                                            {
+                                                Name = "Someone else",
+                                                Year =  "2001"
+                                            }
+                                    },
+                                Fees = new List<AirportFeeVm>()
+                                    {
+                                        new AirportFeeVm
+                                            {
+                                                Name = "Parking",
+                                                Terms = "Blah blah",
+                                                Fee =  100
+                                            },
+                                        new AirportFeeVm
+                                            {
+                                                Name = "Lighting",
+                                                Terms = "Blah blah",
+                                                Fee =  88
+                                            }
+                                    }
                             }
                     },
                 Hospitals = new List<HospitalVm>()
@@ -175,7 +221,7 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                                 Cuisine = "Lebanese",
                                 Attire = "Casual",
                                 OperatingHours = "11:00 AM - 1:00 AM Daily",
-                                AverageMealCost = "40 DHS"
+                                AverageMealCost = 40
                             },
                         new RestaurantVm
                             {
@@ -185,7 +231,7 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                                 Cuisine = "Lebanese",
                                 Attire = "Casual",
                                 OperatingHours = "11:00 AM - 1:00 AM Daily",
-                                AverageMealCost = "35 DHS"
+                                AverageMealCost = 35
                             }
                     },
                 WeatherPreviousDays = new List<WeatherForecast>

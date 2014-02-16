@@ -86,6 +86,7 @@
     <Content Include="Scripts\libs\angular-cookies.js" />
     <Content Include="Scripts\libs\angular-cookies.min.js" />
     <Content Include="Scripts\libs\angular-csp.css" />
+    <Content Include="Scripts\libs\angular-google-maps.js" />
     <Content Include="Scripts\libs\angular-loader.js" />
     <Content Include="Scripts\libs\angular-loader.min.js" />
     <Content Include="Scripts\libs\angular-mocks.js" />
@@ -365,6 +366,7 @@
     <Content Include="Scripts\libs\jquery-1.9.0.js" />
     <Content Include="Scripts\libs\jquery-1.9.0.min.js" />
     <Content Include="Scripts\libs\moment.min.js" />
+    <Content Include="Scripts\libs\underscore.js" />
     <Content Include="templates\airplanes.html" />
     <Content Include="templates\airplane.html" />
     <Content Include="templates\dashboard.html" />

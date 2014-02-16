@@ -51,6 +51,44 @@ namespace AviCommerce.AviQuote.WebAPI.Controllers
                         EstimatedAirportFeesCost = 500,
                         Stops = 0,
                         Legs = 1
+                    },
+                new TripSummaryVm
+                    {
+                        Identifier = "111-201", 
+                        Name = "Doha-Dubai",
+                        Airplane = "111-2000 - A319",
+                        CreateDate = DateTime.Now, 
+                        From = "Doha International", 
+                        EstimatedTakeOff = DateTime.Now.AddDays(1),
+                        To = "Dubai International",
+                        IsEditable = false,
+                        CompletedDate = DateTime.Now.AddDays(-2),
+                        EstimatedLanding = DateTime.Now.AddDays(1),
+                        EstimatedFuelCost = 8000,
+                        EstimatedHandlingCost = 1000,
+                        EstimatedNavigationFeesCost = 2000,
+                        EstimatedAirportFeesCost = 500,
+                        Stops = 0,
+                        Legs = 1
+                    },
+                new TripSummaryVm
+                    {
+                        Identifier = "111-202", 
+                        Name = "Amman-Dubai",
+                        Airplane = "111-2000 - A319",
+                        CreateDate = DateTime.Now, 
+                        From = "Amman Alia", 
+                        EstimatedTakeOff = DateTime.Now.AddDays(1),
+                        To = "Dubai International",
+                        IsEditable = false,
+                        CompletedDate = DateTime.Now.AddDays(-2),
+                        EstimatedLanding = DateTime.Now.AddDays(1),
+                        EstimatedFuelCost = 8000,
+                        EstimatedHandlingCost = 1000,
+                        EstimatedNavigationFeesCost = 2000,
+                        EstimatedAirportFeesCost = 500,
+                        Stops = 0,
+                        Legs = 1
                     }
             };
 

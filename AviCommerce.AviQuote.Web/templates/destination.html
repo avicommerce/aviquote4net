@@ -1,5 +1,212 @@
 ﻿<div class="row">
     <div class="col-md-10">
         <h2>{{ destination.city }}</h2>
+        <h6>{{ destination.country }}</h6>
     </div>
 </div>
+
+<hr/>
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#climate" data-toggle="tab">Climate and Visa Requirement</a></li>
+            <li><a href="#airports" data-toggle="tab">Airports ({{ destination.airports.length }})</a></li>
+            <li><a href="#hospitals" data-toggle="tab">Hospitals ({{ destination.hospitals.length }})</a></li>
+            <li><a href="#restaurants" data-toggle="tab">Restaurants ({{ destination.restaurants.length }})</a></li>
+            <li><a href="#weather" data-toggle="tab">Weather</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="climate">
+	            <div class="panel panel-default">
+			        <div class="panel-heading">
+			        <h3 class="panel-title">Climate and Visa Requirements</h3>
+			        </div>
+			        <div class="panel-body">
+			            <div class="list-group">
+					         <a href="#" class="list-group-item">
+			                    <h4 class="list-group-item-heading">Climate</h4>
+					             <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, nibh non pretium condimentum, urna massa tincidunt quam, eu placerat risus enim ut velit. Fusce sed vestibulum metus. Vivamus ut vehicula est. Nam sit amet libero dapibus, consequat arcu at, eleifend est. Quisque id</p>
+					             <ui>
+					                 <li>risus enim ut velit. Fusce sed vestibulum metus.</li>
+					                 <li>Nam sit amet libero dapibus, consequat</li>
+					                 <li>eu placerat risus enim ut velit</li>
+					             </ui>
+					             <p>eu placerat risus enim ut velit. Fusce sed vestibulum metus. Vivamus ut vehicula est. Nam sit amet libero dapibus, consequat arcu at, eleifend est. Quisque id</p>
+                             </a>
+					         <a href="#" class="list-group-item">
+			                    <h4 class="list-group-item-heading">Visa Requirement</h4>
+					             <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, nibh non pretium condimentum, urna massa tincidunt quam, eu placerat risus enim ut velit. Fusce sed vestibulum metus. Vivamus ut vehicula est. Nam sit amet libero dapibus, consequat arcu at, eleifend est. Quisque id</p>
+                                 <ui>
+					                 <li>risus enim ut velit. Fusce sed vestibulum metus.</li>
+					                 <li>Nam sit amet libero dapibus, consequat</li>
+					                 <li>eu placerat risus enim ut velit</li>
+					             </ui>
+					             <p>eu placerat risus enim ut velit. Fusce sed vestibulum metus. Vivamus ut vehicula est. Nam sit amet libero dapibus, consequat arcu at, eleifend est. Quisque id</p>
+                            </a>
+			            </div>
+			        </div>
+		        </div>
+            </div>
+
+            <div class="tab-pane fade" id="airports">
+                <!--
+                <google-map center="destinationMap.center" zoom="destinationMap.zoom">
+                    <marker ng-repeat="airport in destination.airports" coords="airport"></marker>
+                </google-map>
+                <hr/>
+                -->
+                <div ng-repeat="airport in destination.airports" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{airport.name}} - ICOA = {{airport.icoaSymbol}} - IATA = {{airport.iataSymbol}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            Fuel Suppliers
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Year Established</th>
+                                    <th>Average Price</th>
+                                    <th>Last Price</th>
+                                </tr>
+                                <tr ng-repeat="supplier in airport.fuelSuppliers">
+                                    <td>{{supplier.name}}</td>
+                                    <td>{{supplier.yearEstablished}}</td>
+                                    <td>{{supplier.averagePrice | currency}}</td>
+                                    <td>{{supplier.latestPrice | currency}}</td>
+                                </tr>
+                            </table>
+                            Handlers
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Year Established</th>
+                                </tr>
+                                <tr ng-repeat="handler in airport.handlers">
+                                    <td>{{handler.name}}</td>
+                                    <td>{{handler.year}}</td>
+                                </tr>
+                            </table>
+                            Fees
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Terms</th>
+                                    <th>Fee</th>
+                                </tr>
+                                <tr ng-repeat="fee in airport.fees">
+                                    <td>{{fee.name}}</td>
+                                    <td>{{fee.terms}}</td>
+                                    <td>{{fee.fee | currency}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="hospitals">
+	            <div class="panel panel-default">
+			        <div class="panel-heading">
+			        <h3 class="panel-title">Hospitals</h3>
+			        </div>
+			        <div class="panel-body">
+			            <div class="list-group">
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Specialities</th>
+                                </tr>
+                                <tr ng-repeat="hospital in destination.hospitals">
+                                    <td>{{hospital.name}}</td>
+                                    <td>{{hospital.city}}</td>
+                                    <td>{{hospital.phone}}</td>
+                                    <td>{{hospital.email}}</td>
+                                    <td>{{hospital.specialties}}</td>
+                                </tr>
+                            </table>
+			            </div>
+			        </div>
+		        </div>
+            </div>
+
+            <div class="tab-pane fade" id="restaurants">
+	            <div class="panel panel-default">
+			        <div class="panel-heading">
+			        <h3 class="panel-title">Restaurants</h3>
+			        </div>
+			        <div class="panel-body">
+			            <div class="list-group">
+                            <table class="table table-condensed table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Cuisine</th>
+                                    <th>Attire</th>
+                                    <th>Hours</th>
+                                    <th>Average Meal Cost</th>
+                                </tr>
+                                <tr ng-repeat="restaurant in destination.restaurants">
+                                    <td>{{restaurant.name}}</td>
+                                    <td>{{restaurant.cuisine}}</td>
+                                    <td>{{restaurant.attire}}</td>
+                                    <td>{{restaurant.operatingHours}}</td>
+                                    <td>{{restaurant.averageMealCost | currency}}</td>
+                                </tr>
+                            </table>
+			            </div>
+			        </div>
+		        </div>
+            </div>
+
+            <div class="tab-pane fade" id="weather">
+	            <div class="panel panel-default">
+			        <div class="panel-heading">
+			        <h3 class="panel-title">Weather</h3>
+			        </div>
+			        <div class="panel-body">
+			            <div class="list-group">
+			                Last 7 days
+			                <table class="table table-condensed table-hover">
+			                    <tr>
+			                        <th>Day</th>
+			                        <th>Date</th>
+			                        <th>High</th>
+			                        <th>Low</th>
+			                    </tr>
+			                    <tr ng-repeat="weather in destination.weatherPreviousDays">
+			                        <td>{{weather.day}}</td>
+			                        <td>{{weather.date | date}}</td>
+			                        <td>{{weather.high}}</td>
+			                        <td>{{weather.low}}</td>
+			                    </tr>
+			                </table>
+			                Next 7 days
+			                <table class="table table-condensed table-hover">
+			                    <tr>
+			                        <th>Day</th>
+			                        <th>Date</th>
+			                        <th>High</th>
+			                        <th>Low</th>
+			                    </tr>
+			                    <tr ng-repeat="weather in destination.weatherForwardDays">
+			                        <td>{{weather.day}}</td>
+			                        <td>{{weather.date | date}}</td>
+			                        <td>{{weather.high}}</td>
+			                        <td>{{weather.low}}</td>
+			                    </tr>
+			                </table>
+			            </div>
+			        </div>
+		        </div>
+            </div>
+        </div>
+    </div>
+</div>
+

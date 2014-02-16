@@ -1,28 +1,39 @@
-﻿    <div class="row">
-        <div class="span10">
-            <h5>I expect this to be presented as a map since we have the longitude and latitude</h5>
-        </div>
+﻿<div class="row">
+    <div class="span12">
+        <h5>I expect this to be presented as a map since we have the longitude and latitude</h5>
     </div>
-    <div class="row">
-        <div class="span10">
-            <h2>destinations</h2>
-        </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>destinations</h2>
     </div>
-    <div class="row">
-        <div class="span10">
-            <table class="table table-condensed table-hover">
-                <tr>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th>Longitude</th>
-                    <th>Latitude</th>
-                </tr>
-                <tr ng-click="onDestinationClicked(destination.city)" ng-repeat="destination in destinations">
-                    <td>{{destination.city}}</td>
-                    <td>{{destination.country}}</td>
-                    <td>{{destination.longitude}}</td>
-                    <td>{{destination.latitude}}</td>
-                </tr>
-            </table>
-        </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+        <google-map center="map.center" zoom="map.zoom">
+            <marker ng-repeat="destination in destinations" coords="destination" click="onDestinationClicked(destination.city)"></marker>
+        </google-map>
     </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="span12">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>City</th>
+                <th>Country</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+            </tr>
+            <tr ng-click="onDestinationClicked(destination.city)" ng-repeat="destination in destinations">
+                <td>{{destination.city}}</td>
+                <td>{{destination.country}}</td>
+                <td>{{destination.longitude}}</td>
+                <td>{{destination.latitude}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

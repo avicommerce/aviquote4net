@@ -13,6 +13,6 @@ namespace AviCommerce.AviQuote.WebAPI.ViewModels
         public string Cuisine { get; set; }
         public string Attire { get; set; }
         public string OperatingHours { get; set; }
-        public string AverageMealCost { get; set; }
+        public double AverageMealCost { get; set; }
     }
 }

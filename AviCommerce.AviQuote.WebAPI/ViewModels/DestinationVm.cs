@@ -14,6 +14,7 @@ namespace AviCommerce.AviQuote.WebAPI.ViewModels
         public string TimeZone { get; set; }
         public string VisaRequirement { get; set; }
         public string Climate { get; set; }
+        public int MapZoom { get; set; }
 
         public List<AirportVm> Airports { get; set; }
         public List<HospitalVm> Hospitals { get; set; }
