@@ -35,9 +35,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <span ng-show="trip.stops.length > 0">There are {{ trip.stops.length}} stops in this trip!</span> 
-        <span ng-show="trip.isEditable && trip.stops.length > 0">You can arrange the stops the way you see fit (by clicking the stop arrows) and/or add new stops.</span>
-        <span ng-show="trip.isEditable && trip.stops.length == 0">There are no stops in this trip! Please use the 'Add Stop' form to add stops.</span>
+        <span ng-show="trip.isEditable"><ng-pluralize count="trip.stops.length" when="editableStopsPluralizer"></ng-pluralize></span>
+        <span ng-hide="trip.isEditable"><ng-pluralize count="trip.stops.length" when="nonEditableStopsPluralizer"></ng-pluralize></span>
     </div>
 </div>
 

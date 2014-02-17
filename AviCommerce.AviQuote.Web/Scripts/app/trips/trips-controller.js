@@ -215,7 +215,19 @@ mainModule.controller("TripsController", function ($scope, tripRepository, airpl
         $('#fuelPricesDlg-' + stop.identifier).modal({keyboard: true, show: true});
         //$('#fuelPricesDlg-' + stop.identifier).modal('show');
     };
-    
+
+    $scope.editableStopsPluralizer = {
+        0: "No stops! Please add stops by clicking the 'Add Stop' button.",
+        1: "One stop only in this trip! Please add more stops.",
+        other: "{} stops in this trip! Please use the arrow keys to shuffle the stops."
+    };
+
+    $scope.nonEditableStopsPluralizer = {
+        0: "No stops!",
+        1: "One stop only in this trip!",
+        other: "{} stops in this trip!"
+    };
+
     // ==== PRIVATE FUNCTIONS
     function conditionTrip() {
         console.log('conditionTrip: ' + $routeParams.id);
